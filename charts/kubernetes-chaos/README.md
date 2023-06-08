@@ -1,6 +1,6 @@
 # kubernetes-chaos
 
-![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square) ![AppVersion: 3.0.0-beta7](https://img.shields.io/badge/AppVersion-3.0.0-informational?style=flat-square)
+![Version: 2.28.0](https://img.shields.io/badge/Version-2.28.0-informational?style=flat-square) ![AppVersion: 3.0.0-beta7](https://img.shields.io/badge/AppVersion-3.0.0--beta7-informational?style=flat-square)
 
 A Helm chart to install litmus chaos experiments for kubernetes category (chaos-chart)
 
