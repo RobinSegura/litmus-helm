@@ -15,7 +15,7 @@ existingSecret: ""
 
 adminConfig:
   JWTSecret: "litmus-portal@123"
-  VERSION: "2.14.0"
+  VERSION: "3.0.0-beta8"
   SKIP_SSL_VERIFY: "false"
   # -- leave empty if uses Mongo DB deployed by this chart
   DBPASSWORD: ""
@@ -60,7 +60,7 @@ upgradeAgent:
   controlPlane:
     image:
       repository: upgrade-agent-cp
-      tag: "2.14.0"
+      tag: "3.0.0-beta8"
       pullPolicy: "Always"
     restartPolicy: OnFailure
   nodeSelector: {}
@@ -104,7 +104,7 @@ portal:
       runAsNonRoot: true
     image:
       repository: litmusportal-frontend
-      tag: 2.14.0
+      tag: 3.0.0-beta8
       pullPolicy: "Always"
     containerPort: 8080
     customLabels: {}
@@ -138,7 +138,6 @@ portal:
       annotations: {}
       type: ClusterIP
       port: 9091
-      targetPort: 8080
     virtualService:
       enabled: false
       hosts: []
@@ -166,7 +165,7 @@ portal:
     waitForMongodb:
       image:
         repository: curl
-        tag: 2.14.0
+        tag: 3.0.0-beta8
         pullPolicy: "Always"
       resources:
         # We usually recommend not to specify default resources and to leave this as a conscious
@@ -199,7 +198,7 @@ portal:
         readOnlyRootFilesystem: true
       image:
         repository: litmusportal-server
-        tag: 2.14.0
+        tag: 3.0.0-beta8
         pullPolicy: "Always"
       ports:
         - name: gql-server
@@ -216,13 +215,13 @@ portal:
           port: 8000
           targetPort: 8000
       imageEnv:
-        SUBSCRIBER_IMAGE: "litmusportal-subscriber:2.14.0"
-        EVENT_TRACKER_IMAGE: "litmusportal-event-tracker:2.14.0"
+        SUBSCRIBER_IMAGE: "litmusportal-subscriber:3.0.0-beta8"
+        EVENT_TRACKER_IMAGE: "litmusportal-event-tracker:3.0.0-beta8"
         ARGO_WORKFLOW_CONTROLLER_IMAGE: "workflow-controller:v3.3.1"
         ARGO_WORKFLOW_EXECUTOR_IMAGE: "argoexec:v3.3.1"
-        LITMUS_CHAOS_OPERATOR_IMAGE: "chaos-operator:2.14.0"
-        LITMUS_CHAOS_RUNNER_IMAGE: "chaos-runner:2.14.0"
-        LITMUS_CHAOS_EXPORTER_IMAGE: "chaos-exporter:2.14.0"
+        LITMUS_CHAOS_OPERATOR_IMAGE: "chaos-operator:3.0.0-beta8"
+        LITMUS_CHAOS_RUNNER_IMAGE: "chaos-runner:3.0.0-beta8"
+        LITMUS_CHAOS_EXPORTER_IMAGE: "chaos-exporter:3.0.0-beta8"
       genericEnv:
         TLS_SECRET_NAME: ""
         TLS_CERT_64: ""
@@ -230,10 +229,10 @@ portal:
         SELF_AGENT_NODE_SELECTOR: ""
         SELF_AGENT_TOLERATIONS: ""
         CONTAINER_RUNTIME_EXECUTOR: "k8sapi"
-        HUB_BRANCH_NAME: "v2.14.x"
+        HUB_BRANCH_NAME: "v3.0.0-beta3"
         AGENT_DEPLOYMENTS: '["app=chaos-exporter", "name=chaos-operator", "app=event-tracker", "app=workflow-controller"]'
         LITMUS_AUTH_GRPC_PORT: ":3030"
-        WORKFLOW_HELPER_IMAGE_VERSION: "2.14.0"
+        WORKFLOW_HELPER_IMAGE_VERSION: "3.0.0-beta8"
         REMOTE_HUB_MAX_SIZE: "5000000"
         # Provide UI endpoint if using namespaced scope
         CHAOS_CENTER_UI_ENDPOINT: ""
@@ -277,7 +276,7 @@ portal:
       automountServiceAccountToken: false
       image:
         repository: litmusportal-auth-server
-        tag: 2.14.0
+        tag: 3.0.0-beta8
         pullPolicy: "Always"
       ports:
         - name: auth-server
@@ -334,7 +333,7 @@ mongodb:
     # -- existingSecret Existing secret with MongoDB(&reg;) credentials (keys: `mongodb-passwords`, `mongodb-root-password`, `mongodb-metrics-password`, ` mongodb-replica-set-key`)
     existingSecret: ""
   architecture: standalone
-  useStatefulSet: false
+  useStatefulSet: true
   replicaCount: 1
   metrics:
     enabled: false
