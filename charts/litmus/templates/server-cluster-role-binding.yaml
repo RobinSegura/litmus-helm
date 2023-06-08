@@ -24,10 +24,9 @@ metadata:
     app.kubernetes.io/name: litmus
     # provide unique instance-id if applicable
     # app.kubernetes.io/instance: litmus-abcxzy
-    app.kubernetes.io/version: v1.13.6
+    app.kubernetes.io/version: {{ .Values.adminConfig.VERSION }}
     app.kubernetes.io/component: operator-clusterrolebinding
     app.kubernetes.io/part-of: litmus
-    app.kubernetes.io/managed-by: kubectl
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -106,14 +105,14 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: litmus-server-crb-for-{{ include "litmus-portal.fullname" . }}-server
+  name: litmus-server-crb
   labels:
-    app.kubernetes.io/component: litmus-server-crb-for-{{ include "litmus-portal.name" . }}-server
+    app.kubernetes.io/component: litmus-server-crb
     {{- include "litmus-portal.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: litmus-server-cr-for-{{ include "litmus-portal.fullname" . }}-server
+  name: litmus-server-cr
 subjects:
   - kind: ServiceAccount
     name: {{ .Values.portal.server.serviceAccountName }}
