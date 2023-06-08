@@ -44,6 +44,9 @@ kind: ClusterRole
 metadata:
   name: litmus-cluster-scope-for-{{ include "litmus-portal.fullname" . }}-server
   labels:
+    app.kubernetes.io/version: {{ .Values.adminConfig.VERSION }}
+    app.kubernetes.io/component: operator-clusterrole
+    app.kubernetes.io/part-of: litmus
     app.kubernetes.io/component: litmus-cluster-scope-for-{{ include "litmus-portal.fullname" . }}-server
     {{- include "litmus-portal.labels" . | nindent 4 }}
 rules:
@@ -266,7 +269,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: litmus-server-cr-for-{{ include "litmus-portal.fullname" . }}-server
+  name: litmus-server-cr
   labels:
     app.kubernetes.io/component: litmus-server-cr-for-{{ include "litmus-portal.name" . }}-server
     {{- include "litmus-portal.labels" . | nindent 4 }}
