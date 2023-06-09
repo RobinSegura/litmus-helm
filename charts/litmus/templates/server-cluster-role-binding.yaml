@@ -78,6 +78,9 @@ metadata:
     {{- include "litmus-portal.labels" . | nindent 4 }}
 subjects:
   - kind: ServiceAccount
+    name: litmus
+    namespace: {{ .Release.Namespace }}
+  - kind: ServiceAccount
     name: {{ .Values.portal.server.serviceAccountName }}
     namespace: {{ .Release.Namespace }}
 roleRef:
