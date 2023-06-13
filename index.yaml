@@ -31,4 +31,51 @@ entries:
     urls:
     - https://github.com/RobinSegura/litmus-helm/releases/download/litmus-3.0.0/litmus-3.0.0.tgz
     version: 3.0.0
-generated: "2023-06-08T15:31:02.328545679Z"
+  litmus-agent:
+  - apiVersion: v2
+    appVersion: 3.0.0-beta7
+    created: "2023-06-13T14:47:03.040616213Z"
+    dependencies:
+    - condition: chaos-operator.enabled
+      name: chaos-operator
+      repository: ""
+      version: 0.1.0
+    - condition: chaos-exporter.enabled
+      name: chaos-exporter
+      repository: ""
+      version: 0.1.0
+    - condition: event-tracker.enabled
+      name: event-tracker
+      repository: ""
+      version: 0.1.0
+    - condition: subscriber.enabled
+      name: subscriber
+      repository: ""
+      version: 0.1.0
+    - condition: workflow-controller.enabled
+      name: workflow-controller
+      repository: ""
+      version: 0.1.0
+    description: A Helm chart to install litmus agent
+    digest: 1982370b93cce61225963dac8ee1436219426164d646c7334f5720442daa78be
+    home: https://litmuschaos.io
+    icon: https://raw.githubusercontent.com/litmuschaos/icons/master/litmus.png
+    keywords:
+    - chaos-engineering
+    - resiliency
+    - kubernetes
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: remi.ziolkowski-ext@pole-emploi.fr
+      name: Vr00mm
+    - email: shubham.chaudhary@harness.io
+      name: ispeakc0de
+    - email: vedant.shrotria@harness.io
+      name: Jonsy13
+    name: litmus-agent
+    sources:
+    - https://github.com/litmuschaos/litmus
+    urls:
+    - https://github.com/RobinSegura/litmus-helm/releases/download/litmus-agent-3.0.0/litmus-agent-3.0.0.tgz
+    version: 3.0.0
+generated: "2023-06-13T14:47:03.040623313Z"
